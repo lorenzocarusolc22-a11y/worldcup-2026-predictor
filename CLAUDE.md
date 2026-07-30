@@ -1,25 +1,27 @@
-# CLAUDE.md
+# World Cup 2026 Predictor
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+## Project
 
-## Progetto
-
-Simulatore del Mondiale di calcio 2026 nel formato reale a **48 squadre** (16 gironi da 3). Usa un sistema a punteggi ponderati per stimare la forza delle squadre e simulazioni Monte Carlo per calcolare le probabilità di vittoria finale di ogni squadra.
+Monte Carlo simulator for the FIFA World Cup 2026 in the official 
+48-team format (12 groups of 4). Uses a weighted scoring system 
+to estimate team strength and Monte Carlo simulations to calculate 
+the win probability for each nation.
 
 ## Stack
 
 - Python 3, pandas, numpy
-- Nessuna dipendenza aggiuntiva oltre alle librerie sopra
+- No additional dependencies beyond the above
 
-## Dati
+## Data
 
-I dati delle squadre si trovano in `data/teams.csv`.
+Team data is stored in `data/teams.csv`.
 
 ## Output
 
-Probabilità di vittoria finale per ogni squadra, prodotta dalla simulazione Monte Carlo.
+Final win probability for each nation, produced by the Monte Carlo simulation.
+Open `dashboard.html` in the browser to explore results interactively.
 
-## Convenzioni
+## Conventions
 
-- Solo funzioni, nessuna classe o OOP
-- Commenti nel codice scritti in italiano
+- Functions only, no classes or OOP
+- This file is used by Claude Code as project context
