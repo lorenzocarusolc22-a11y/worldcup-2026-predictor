@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FIFA World Cup 2026 Predictor</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#08111e;color:#e8e8e8;min-height:100vh}
+nav{position:sticky;top:0;z-index:100;background:linear-gradient(90deg,#0a1628 0%,#1a2744 50%,#0a1628 100%);border-bottom:2px solid #c9a227;display:flex;align-items:center;padding:0 24px;height:64px}
+.nav-brand{font-size:1.1rem;font-weight:700;color:#c9a227;letter-spacing:.04em;margin-right:auto;display:flex;align-items:center;gap:10px}
+.nav-brand span{font-size:1.5rem}
+.nav-tabs{display:flex;gap:4px}
+.nav-tab{background:none;border:none;color:#8899bb;font-size:.9rem;font-weight:600;padding:10px 22px;border-radius:6px 6px 0 0;cursor:pointer;letter-spacing:.03em;transition:all .2s;position:relative;top:2px}
+.nav-tab:hover{color:#e8e8e8;background:rgba(201,162,39,.12)}
+.nav-tab.active{color:#c9a227;background:rgba(201,162,39,.18);border-bottom:2px solid #c9a227}
+.screen{display:none;padding:28px 32px;min-height:calc(100vh - 64px)}
+.screen.active{display:block}
+h2{color:#c9a227;font-size:1.3rem;letter-spacing:.06em;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.flag{width:28px;height:28px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.18);flex-shrink:0;background:#1a2744}
+.flag-sm{width:20px;height:20px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,.15);flex-shrink:0;background:#1a2744}
+/* GROUP STAGE */
+.groups-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.group-card{background:linear-gradient(160deg,#0e1f38,#111d33);border:1.5px solid #1e3058;border-radius:12px;padding:18px 16px 14px;cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
+.group-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#c9a227,#ffda44,#c9a227);opacity:0;transition:opacity .2s}
+.group-card:hover{border-color:#c9a227;transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,162,39,.18)}
+.group-card:hover::before{opacity:1}
+.group-card-title{font-size:1rem;font-weight:700;color:#c9a227;letter-spacing:.08em;margin-bottom:12px}
+.group-card-teams{display:flex;flex-direction:column;gap:7px}
+.group-card-team{display:flex;align-items:center;gap:9px;font-size:.84rem;color:#c8d4e8}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(4,10,22,.88);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:linear-gradient(160deg,#0d1c33,#111d33);border:1.5px solid #c9a227;border-radius:16px;max-width:680px;width:100%;max-height:88vh;overflow-y:auto;padding:28px;position:relative}
+.modal-close{position:absolute;top:14px;right:18px;background:none;border:none;color:#8899bb;font-size:1.6rem;cursor:pointer;line-height:1;transition:color .15s}
+.modal-close:hover{color:#c9a227}
+.modal-title{font-size:1.15rem;font-weight:700;color:#c9a227;letter-spacing:.06em;margin-bottom:20px}
+.standings{width:100%;border-collapse:collapse;font-size:.84rem;margin-bottom:20px}
+.standings th{color:#6a7fa0;font-weight:600;text-transform:uppercase;font-size:.7rem;letter-spacing:.07em;padding:6px 10px;border-bottom:1px solid #1e3058;text-align:left}
+.standings td{padding:8px 10px;border-bottom:1px solid #131f35}
+.standings tr:last-child td{border-bottom:none}
+.team-cell{display:flex;align-items:center;gap:9px}
+.pos{color:#6a7fa0;font-weight:700;width:20px;text-align:center}
+.qualified{color:#4adf8a !important}
+.num{text-align:right;color:#8faabb}
+.matchday-label{font-size:.72rem;font-weight:700;color:#c9a227;text-transform:uppercase;letter-spacing:.1em;margin:14px 0 7px;padding-bottom:4px;border-bottom:1px solid #1a2e4a}
+.match-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #0e1c30;font-size:.84rem}
+.match-row:last-child{border-bottom:none}
+.match-team{display:flex;align-items:center;gap:7px;flex:1;min-width:0}
+.match-team.right{justify-content:flex-end;flex-direction:row-reverse}
+.match-score{font-weight:700;color:#e8e8e8;background:#0a1525;border-radius:6px;padding:3px 12px;font-size:.88rem;min-width:68px;text-align:center;flex-shrink:0;border:1px solid #1a2e4a}
+/* BRACKET */
+.champion-banner{text-align:center;padding:16px 10px 14px;margin-bottom:12px}
+.champion-label{font-size:.72rem;font-weight:700;color:#8899bb;text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px}
+.champion-team{display:inline-flex;align-items:center;gap:12px;font-size:1.35rem;font-weight:800;color:#ffda44;background:linear-gradient(135deg,#1a2f10,#1f3a14);border:2px solid #c9a227;border-radius:12px;padding:10px 22px}
+.champion-team .flag{width:36px;height:36px;border-color:rgba(201,162,39,.4)}
+.champion-prob{font-size:.85rem;color:#aab8cc;font-weight:500;margin-left:4px}
+.bracket-outer{overflow-x:auto;padding-bottom:20px}
+.bracket-rounds-hdr{display:flex;margin-bottom:6px}
+.rh{text-align:center;font-size:.68rem;font-weight:700;color:#6a7fa0;text-transform:uppercase;letter-spacing:.08em;padding-top:2px}
+/* bracket match card — sized by JS constants below */
+.bm{background:linear-gradient(135deg,#0e1f38,#111d33);border:1.5px solid #1e3058;border-radius:8px;padding:5px 8px;position:absolute;transition:border-color .2s;overflow:hidden}
+.bm:hover{border-color:#3a5888}
+.bm-num{font-size:.58rem;color:#445566;font-weight:600;letter-spacing:.04em;margin-bottom:3px}
+.bm-team{display:flex;align-items:center;gap:5px;padding:3px 0;font-size:.76rem;font-weight:500;color:#c8d4e8;min-width:0}
+.bm-team.winner{color:#c9a227;font-weight:700}
+.bm-prob{font-size:.66rem;color:#4a6080;margin-left:auto;padding-left:3px;flex-shrink:0}
+.bm-divider{border:none;border-top:1px solid #1a2e4a;margin:2px 0}
+.bm-score{font-size:.72rem;color:#6a7fa0;text-align:center;margin-top:4px;letter-spacing:.04em;font-weight:600}
+.bm.final-match{border-color:#c9a227;box-shadow:0 0 20px rgba(201,162,39,.25)}
+.bm.final-match .bm-team.winner{color:#ffda44}
+.bm.final-match .bm-score{color:#a08030}
+.third-block{margin-top:28px;padding-top:16px;border-top:1px solid #1a2e4a}
+.third-label{font-size:.72rem;font-weight:700;color:#6a7fa0;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+/* PROBABILITIES */
+.prob-list{max-width:740px}
+.prob-row{display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid #0e1c30}
+.prob-row:last-child{border-bottom:none}
+.prob-rank{font-size:.78rem;color:#445566;font-weight:700;width:26px;text-align:right;flex-shrink:0}
+.prob-team{display:flex;align-items:center;gap:9px;width:190px;flex-shrink:0}
+.prob-team-name{font-size:.88rem;font-weight:500}
+.prob-bar-wrap{flex:1;height:20px;background:#0a1525;border-radius:4px;overflow:hidden}
+.prob-bar{height:100%;border-radius:4px}
+.prob-pct{font-size:.86rem;font-weight:700;width:48px;text-align:right;flex-shrink:0}
+.gold .prob-bar{background:linear-gradient(90deg,#a07c10,#ffda44)}
+.gold .prob-pct,.gold .prob-rank{color:#ffda44}
+.silver .prob-bar{background:linear-gradient(90deg,#5a6f88,#b0c4d8)}
+.silver .prob-pct,.silver .prob-rank{color:#b0c4d8}
+.bronze .prob-bar{background:linear-gradient(90deg,#7a3f1a,#cd7f32)}
+.bronze .prob-pct,.bronze .prob-rank{color:#cd7f32}
+.other .prob-bar{background:linear-gradient(90deg,#1a3a70,#2a5aad)}
+.other .prob-pct{color:#7aaabb}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-brand"><span>&#9917;</span>World Cup 2026 Predictor</div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showScreen('groups',this)">Group Stage</button>
+    <button class="nav-tab" onclick="showScreen('bracket',this)">Bracket</button>
+    <button class="nav-tab" onclick="showScreen('probabilities',this)">Win Probability</button>
+  </div>
+</nav>
+<div class="modal-overlay" id="modal" onclick="closeModal(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="document.getElementById('modal').classList.remove('open')">&times;</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+<div id="groups" class="screen active">
+  <h2>&#127942; Group Stage</h2>
+  <div class="groups-grid" id="groups-grid"></div>
+</div>
+<div id="bracket" class="screen">
+  <h2>&#9883; Knockout Bracket</h2>
+  <div id="bracket-container"></div>
+</div>
+<div id="probabilities" class="screen">
+  <h2>&#128200; Win Probability</h2>
+  <div class="prob-list" id="prob-list"></div>
+</div>
+<script>
+const DATA = {"vincitore_probabilita":{"Mexico":2.8,"South Korea":0.5,"Czech Republic":0.1,"Canada":0.3,"Switzerland":0.5,"Brazil":7.6,"Morocco":2.3,"United States":1.9,"Australia":0.1,"Turkey":0.1,"Germany":2.4,"Netherlands":3.5,"Japan":0.9,"Sweden":0.3,"Belgium":2.1,"Iran":0.5,"Spain":16.4,"Uruguay":1.5,"France":12.7,"Senegal":0.5,"Norway":1.9,"Argentina":24.0,"Austria":0.6,"Portugal":7.7,"Colombia":0.7,"England":6.3,"Croatia":1.8},"vincitore_finale":"Argentina","gironi":{"A":{"classifica":[{"pos":1,"team":"Mexico","punti":5.5,"gf":4.7,"gs":4.1,"pass_pct":90.5},{"pos":2,"team":"South Korea","punti":4.3,"gf":4.5,"gs":4.3,"pass_pct":76.7},{"pos":3,"team":"Czech Republic","punti":3.9,"gf":4.3,"gs":4.3,"pass_pct":70.2},{"pos":4,"team":"South Africa","punti":2.7,"gf":3.7,"gs":4.5,"pass_pct":37.0}],"partite":[{"giornata":1,"squadra_a":"Mexico","gol_a":1.6,"gol_b":1.2,"squadra_b":"South Africa"},{"giornata":2,"squadra_a":"Mexico","gol_a":1.6,"gol_b":1.5,"squadra_b":"South Korea"},{"giornata":3,"squadra_a":"Mexico","gol_a":1.5,"gol_b":1.5,"squadra_b":"Czech Republic"},{"giornata":3,"squadra_a":"South Africa","gol_a":1.2,"gol_b":1.5,"squadra_b":"South Korea"},{"giornata":2,"squadra_a":"South Africa","gol_a":1.3,"gol_b":1.4,"squadra_b":"Czech Republic"},{"giornata":1,"squadra_a":"South Korea","gol_a":1.5,"gol_b":1.4,"squadra_b":"Czech Republic"}]},"B":{"classifica":[{"pos":1,"team":"Switzerland","punti":5.3,"gf":4.4,"gs":4.0,"pass_pct":87.6},{"pos":2,"team":"Canada","punti":4.5,"gf":4.4,"gs":4.0,"pass_pct":75.8},{"pos":3,"team":"Bosnia and Herzegovina","punti":3.8,"gf":4.0,"gs":4.1,"pass_pct":69.3},{"pos":4,"team":"Qatar","punti":2.7,"gf":3.6,"gs":4.3,"pass_pct":38.8}],"partite":[{"giornata":1,"squadra_a":"Canada","gol_a":1.5,"gol_b":1.3,"squadra_b":"Bosnia and Herzegovina"},{"giornata":2,"squadra_a":"Canada","gol_a":1.5,"gol_b":1.2,"squadra_b":"Qatar"},{"giornata":3,"squadra_a":"Canada","gol_a":1.4,"gol_b":1.5,"squadra_b":"Switzerland"},{"giornata":3,"squadra_a":"Bosnia and Herzegovina","gol_a":1.3,"gol_b":1.2,"squadra_b":"Qatar"},{"giornata":2,"squadra_a":"Bosnia and Herzegovina","gol_a":1.3,"gol_b":1.4,"squadra_b":"Switzerland"},{"giornata":1,"squadra_a":"Qatar","gol_a":1.2,"gol_b":1.4,"squadra_b":"Switzerland"}]},"C":{"classifica":[{"pos":1,"team":"Brazil","punti":6.4,"gf":5.7,"gs":3.6,"pass_pct":96.9},{"pos":2,"team":"Morocco","punti":5.4,"gf":3.9,"gs":4.2,"pass_pct":93.2},{"pos":3,"team":"Scotland","punti":3.5,"gf":3.9,"gs":4.2,"pass_pct":63.9},{"pos":4,"team":"Haiti","punti":1.2,"gf":2.9,"gs":4.5,"pass_pct":8.9}],"partite":[{"giornata":1,"squadra_a":"Brazil","gol_a":1.9,"gol_b":1.3,"squadra_b":"Morocco"},{"giornata":2,"squadra_a":"Brazil","gol_a":1.9,"gol_b":1.0,"squadra_b":"Haiti"},{"giornata":3,"squadra_a":"Brazil","gol_a":1.9,"gol_b":1.3,"squadra_b":"Scotland"},{"giornata":3,"squadra_a":"Morocco","gol_a":1.3,"gol_b":1.0,"squadra_b":"Haiti"},{"giornata":2,"squadra_a":"Morocco","gol_a":1.3,"gol_b":1.3,"squadra_b":"Scotland"},{"giornata":1,"squadra_a":"Haiti","gol_a":0.9,"gol_b":1.3,"squadra_b":"Scotland"}]},"D":{"classifica":[{"pos":1,"team":"United States","punti":5.7,"gf":4.7,"gs":4.2,"pass_pct":90.7},{"pos":2,"team":"Australia","punti":3.8,"gf":4.3,"gs":4.2,"pass_pct":67.9},{"pos":3,"team":"Turkey","punti":3.7,"gf":4.4,"gs":4.2,"pass_pct":67.6},{"pos":4,"team":"Paraguay","punti":3.2,"gf":3.7,"gs":4.5,"pass_pct":49.8}],"partite":[{"giornata":1,"squadra_a":"United States","gol_a":1.5,"gol_b":1.3,"squadra_b":"Paraguay"},{"giornata":2,"squadra_a":"United States","gol_a":1.5,"gol_b":1.4,"squadra_b":"Australia"},{"giornata":3,"squadra_a":"United States","gol_a":1.6,"gol_b":1.5,"squadra_b":"Turkey"},{"giornata":3,"squadra_a":"Paraguay","gol_a":1.2,"gol_b":1.5,"squadra_b":"Australia"},{"giornata":2,"squadra_a":"Paraguay","gol_a":1.2,"gol_b":1.5,"squadra_b":"Turkey"},{"giornata":1,"squadra_a":"Australia","gol_a":1.4,"gol_b":1.4,"squadra_b":"Turkey"}]},"E":{"classifica":[{"pos":1,"team":"Germany","punti":6.5,"gf":5.9,"gs":3.7,"pass_pct":97.2},{"pos":2,"team":"Ecuador","punti":4.3,"gf":4.3,"gs":4.4,"pass_pct":78.6},{"pos":3,"team":"Ivory Coast","punti":3.9,"gf":3.9,"gs":4.4,"pass_pct":68.6},{"pos":4,"team":"Curacao","punti":1.8,"gf":3.1,"gs":4.6,"pass_pct":18.6}],"partite":[{"giornata":1,"squadra_a":"Germany","gol_a":1.9,"gol_b":1.0,"squadra_b":"Curacao"},{"giornata":2,"squadra_a":"Germany","gol_a":2.0,"gol_b":1.3,"squadra_b":"Ivory Coast"},{"giornata":3,"squadra_a":"Germany","gol_a":2.0,"gol_b":1.5,"squadra_b":"Ecuador"},{"giornata":3,"squadra_a":"Curacao","gol_a":1.0,"gol_b":1.3,"squadra_b":"Ivory Coast"},{"giornata":2,"squadra_a":"Curacao","gol_a":1.1,"gol_b":1.4,"squadra_b":"Ecuador"},{"giornata":1,"squadra_a":"Ivory Coast","gol_a":1.3,"gol_b":1.4,"squadra_b":"Ecuador"}]},"F":{"classifica":[{"pos":1,"team":"Netherlands","punti":5.4,"gf":5.5,"gs":4.5,"pass_pct":89.0},{"pos":2,"team":"Japan","punti":4.6,"gf":5.1,"gs":4.6,"pass_pct":83.5},{"pos":3,"team":"Sweden","punti":3.8,"gf":4.6,"gs":4.7,"pass_pct":69.0},{"pos":4,"team":"Tunisia","punti":2.5,"gf":3.7,"gs":5.1,"pass_pct":38.4}],"partite":[{"giornata":1,"squadra_a":"Netherlands","gol_a":1.8,"gol_b":1.8,"squadra_b":"Japan"},{"giornata":2,"squadra_a":"Netherlands","gol_a":1.9,"gol_b":1.5,"squadra_b":"Sweden"},{"giornata":3,"squadra_a":"Netherlands","gol_a":1.8,"gol_b":1.3,"squadra_b":"Tunisia"},{"giornata":3,"squadra_a":"Japan","gol_a":1.6,"gol_b":1.6,"squadra_b":"Sweden"},{"giornata":2,"squadra_a":"Japan","gol_a":1.7,"gol_b":1.3,"squadra_b":"Tunisia"},{"giornata":1,"squadra_a":"Sweden","gol_a":1.5,"gol_b":1.2,"squadra_b":"Tunisia"}]},"G":{"classifica":[{"pos":1,"team":"Belgium","punti":6.2,"gf":5.3,"gs":3.7,"pass_pct":96.5},{"pos":2,"team":"Iran","punti":4.8,"gf":3.9,"gs":4.2,"pass_pct":86.1},{"pos":3,"team":"Egypt","punti":4.3,"gf":4.1,"gs":4.2,"pass_pct":79.2},{"pos":4,"team":"New Zealand","punti":1.3,"gf":3.1,"gs":4.4,"pass_pct":10.0}],"partite":[{"giornata":1,"squadra_a":"Belgium","gol_a":1.8,"gol_b":1.4,"squadra_b":"Egypt"},{"giornata":2,"squadra_a":"Belgium","gol_a":1.7,"gol_b":1.3,"squadra_b":"Iran"},{"giornata":3,"squadra_a":"Belgium","gol_a":1.7,"gol_b":1.0,"squadra_b":"New Zealand"},{"giornata":3,"squadra_a":"Egypt","gol_a":1.4,"gol_b":1.3,"squadra_b":"Iran"},{"giornata":2,"squadra_a":"Egypt","gol_a":1.4,"gol_b":1.0,"squadra_b":"New Zealand"},{"giornata":1,"squadra_a":"Iran","gol_a":1.3,"gol_b":1.1,"squadra_b":"New Zealand"}]},"H":{"classifica":[{"pos":1,"team":"Spain","punti":6.7,"gf":6.3,"gs":4.1,"pass_pct":98.9},{"pos":2,"team":"Uruguay","punti":5.3,"gf":5.2,"gs":4.6,"pass_pct":91.9},{"pos":3,"team":"Saudi Arabia","punti":2.4,"gf":3.9,"gs":5.0,"pass_pct":34.5},{"pos":4,"team":"Cape Verde","punti":2.1,"gf":3.4,"gs":5.1,"pass_pct":27.3}],"partite":[{"giornata":1,"squadra_a":"Spain","gol_a":2.1,"gol_b":1.1,"squadra_b":"Cape Verde"},{"giornata":2,"squadra_a":"Spain","gol_a":2.1,"gol_b":1.3,"squadra_b":"Saudi Arabia"},{"giornata":3,"squadra_a":"Spain","gol_a":2.1,"gol_b":1.7,"squadra_b":"Uruguay"},{"giornata":3,"squadra_a":"Cape Verde","gol_a":1.1,"gol_b":1.3,"squadra_b":"Saudi Arabia"},{"giornata":2,"squadra_a":"Cape Verde","gol_a":1.1,"gol_b":1.7,"squadra_b":"Uruguay"},{"giornata":1,"squadra_a":"Saudi Arabia","gol_a":1.4,"gol_b":1.8,"squadra_b":"Uruguay"}]},"I":{"classifica":[{"pos":1,"team":"France","punti":6.3,"gf":5.9,"gs":4.4,"pass_pct":96.7},{"pos":2,"team":"Norway","punti":4.7,"gf":5.1,"gs":4.7,"pass_pct":85.2},{"pos":3,"team":"Senegal","punti":3.8,"gf":4.3,"gs":4.8,"pass_pct":73.3},{"pos":4,"team":"Iraq","punti":1.7,"gf":3.7,"gs":5.1,"pass_pct":18.0}],"partite":[{"giornata":1,"squadra_a":"France","gol_a":1.9,"gol_b":1.4,"squadra_b":"Senegal"},{"giornata":2,"squadra_a":"France","gol_a":1.9,"gol_b":1.2,"squadra_b":"Iraq"},{"giornata":3,"squadra_a":"France","gol_a":2.1,"gol_b":1.7,"squadra_b":"Norway"},{"giornata":3,"squadra_a":"Senegal","gol_a":1.4,"gol_b":1.2,"squadra_b":"Iraq"},{"giornata":2,"squadra_a":"Senegal","gol_a":1.4,"gol_b":1.7,"squadra_b":"Norway"},{"giornata":1,"squadra_a":"Iraq","gol_a":1.2,"gol_b":1.7,"squadra_b":"Norway"}]},"J":{"classifica":[{"pos":1,"team":"Argentina","punti":7.0,"gf":6.5,"gs":4.0,"pass_pct":98.5},{"pos":2,"team":"Austria","punti":4.3,"gf":4.8,"gs":4.6,"pass_pct":81.7},{"pos":3,"team":"Algeria","punti":3.4,"gf":3.8,"gs":5.0,"pass_pct":64.0},{"pos":4,"team":"Jordan","punti":1.7,"gf":3.5,"gs":5.1,"pass_pct":18.4}],"partite":[{"giornata":1,"squadra_a":"Argentina","gol_a":2.2,"gol_b":1.2,"squadra_b":"Algeria"},{"giornata":2,"squadra_a":"Argentina","gol_a":2.2,"gol_b":1.6,"squadra_b":"Austria"},{"giornata":3,"squadra_a":"Argentina","gol_a":2.1,"gol_b":1.1,"squadra_b":"Jordan"},{"giornata":3,"squadra_a":"Algeria","gol_a":1.3,"gol_b":1.6,"squadra_b":"Austria"},{"giornata":2,"squadra_a":"Algeria","gol_a":1.3,"gol_b":1.2,"squadra_b":"Jordan"},{"giornata":1,"squadra_a":"Austria","gol_a":1.7,"gol_b":1.2,"squadra_b":"Jordan"}]},"K":{"classifica":[{"pos":1,"team":"Portugal","punti":6.5,"gf":6.2,"gs":4.2,"pass_pct":96.9},{"pos":2,"team":"Colombia","punti":5.2,"gf":5.0,"gs":4.6,"pass_pct":91.0},{"pos":3,"team":"DR Congo","punti":2.7,"gf":3.8,"gs":4.9,"pass_pct":44.7},{"pos":4,"team":"Uzbekistan","punti":2.1,"gf":3.6,"gs":4.9,"pass_pct":25.1}],"partite":[{"giornata":1,"squadra_a":"Portugal","gol_a":2.1,"gol_b":1.3,"squadra_b":"DR Congo"},{"giornata":2,"squadra_a":"Portugal","gol_a":2.0,"gol_b":1.2,"squadra_b":"Uzbekistan"},{"giornata":3,"squadra_a":"Portugal","gol_a":2.1,"gol_b":1.7,"squadra_b":"Colombia"},{"giornata":3,"squadra_a":"DR Congo","gol_a":1.2,"gol_b":1.1,"squadra_b":"Uzbekistan"},{"giornata":2,"squadra_a":"DR Congo","gol_a":1.2,"gol_b":1.7,"squadra_b":"Colombia"},{"giornata":1,"squadra_a":"Uzbekistan","gol_a":1.3,"gol_b":1.6,"squadra_b":"Colombia"}]},"L":{"classifica":[{"pos":1,"team":"England","punti":6.5,"gf":5.7,"gs":3.8,"pass_pct":97.5},{"pos":2,"team":"Croatia","punti":5.3,"gf":4.5,"gs":4.3,"pass_pct":92.1},{"pos":3,"team":"Ghana","punti":2.7,"gf":3.8,"gs":4.6,"pass_pct":42.1},{"pos":4,"team":"Panama","punti":2.0,"gf":3.5,"gs":4.7,"pass_pct":22.7}],"partite":[{"giornata":1,"squadra_a":"England","gol_a":1.9,"gol_b":1.5,"squadra_b":"Croatia"},{"giornata":2,"squadra_a":"England","gol_a":1.9,"gol_b":1.2,"squadra_b":"Ghana"},{"giornata":3,"squadra_a":"England","gol_a":1.9,"gol_b":1.1,"squadra_b":"Panama"},{"giornata":3,"squadra_a":"Croatia","gol_a":1.5,"gol_b":1.3,"squadra_b":"Ghana"},{"giornata":2,"squadra_a":"Croatia","gol_a":1.5,"gol_b":1.2,"squadra_b":"Panama"},{"giornata":1,"squadra_a":"Ghana","gol_a":1.3,"gol_b":1.2,"squadra_b":"Panama"}]}},"bracket":{"73":{"desc":"2o Gio.A vs 2o Gio.B","squadra_a":{"team":"South Korea","prob_arrivo":36.1},"squadra_b":{"team":"Bosnia and Herzegovina","prob_arrivo":32.3},"vincitore":{"team":"South Korea","prob":20.8},"gol_a":1.5,"gol_b":1.4},"74":{"desc":"1o Gio.E vs 3a(A/B/C/D/F)","squadra_a":{"team":"Germany","prob_arrivo":71.7},"squadra_b":{"team":"Sweden","prob_arrivo":14.0},"vincitore":{"team":"Germany","prob":48.4},"gol_a":1.9,"gol_b":1.5},"75":{"desc":"1o Gio.F vs 2o Gio.C","squadra_a":{"team":"Netherlands","prob_arrivo":52.4},"squadra_b":{"team":"Morocco","prob_arrivo":51.1},"vincitore":{"team":"Netherlands","prob":32.7},"gol_a":1.8,"gol_b":1.3},"76":{"desc":"1o Gio.C vs 2o Gio.F","squadra_a":{"team":"Brazil","prob_arrivo":65.0},"squadra_b":{"team":"Japan","prob_arrivo":36.3},"vincitore":{"team":"Brazil","prob":42.9},"gol_a":2.0,"gol_b":1.7},"77":{"desc":"1o Gio.I vs 3a(C/D/F/G/H)","squadra_a":{"team":"France","prob_arrivo":67.4},"squadra_b":{"team":"Egypt","prob_arrivo":18.0},"vincitore":{"team":"France","prob":58.0},"gol_a":1.9,"gol_b":1.4},"78":{"desc":"2o Gio.E vs 2o Gio.I","squadra_a":{"team":"Ecuador","prob_arrivo":41.7},"squadra_b":{"team":"Norway","prob_arrivo":43.9},"vincitore":{"team":"Norway","prob":30.6},"gol_a":1.4,"gol_b":1.8},"79":{"desc":"1o Gio.A vs 3a(C/E/F/H/I)","squadra_a":{"team":"Mexico","prob_arrivo":56.2},"squadra_b":{"team":"Senegal","prob_arrivo":23.7},"vincitore":{"team":"Mexico","prob":38.6},"gol_a":1.6,"gol_b":1.4},"80":{"desc":"1o Gio.L vs 3a(E/H/I/J/K)","squadra_a":{"team":"England","prob_arrivo":67.9},"squadra_b":{"team":"Algeria","prob_arrivo":20.2},"vincitore":{"team":"England","prob":54.8},"gol_a":2.0,"gol_b":1.3},"81":{"desc":"1o Gio.D vs 3a(B/E/F/I/J)","squadra_a":{"team":"United States","prob_arrivo":57.4},"squadra_b":{"team":"Qatar","prob_arrivo":13.0},"vincitore":{"team":"United States","prob":42.4},"gol_a":1.5,"gol_b":1.2},"82":{"desc":"1o Gio.G vs 3a(A/E/H/I/J)","squadra_a":{"team":"Belgium","prob_arrivo":61.0},"squadra_b":{"team":"Czech Republic","prob_arrivo":17.4},"vincitore":{"team":"Belgium","prob":45.6},"gol_a":1.8,"gol_b":1.4},"83":{"desc":"2o Gio.K vs 2o Gio.L","squadra_a":{"team":"Colombia","prob_arrivo":54.3},"squadra_b":{"team":"Croatia","prob_arrivo":52.5},"vincitore":{"team":"Colombia","prob":29.4},"gol_a":1.6,"gol_b":1.6},"84":{"desc":"1o Gio.H vs 2o Gio.J","squadra_a":{"team":"Spain","prob_arrivo":70.6},"squadra_b":{"team":"Austria","prob_arrivo":50.7},"vincitore":{"team":"Spain","prob":55.6},"gol_a":2.0,"gol_b":1.7},"85":{"desc":"1o Gio.B vs 3a(E/F/G/I/J)","squadra_a":{"team":"Switzerland","prob_arrivo":53.2},"squadra_b":{"team":"Egypt","prob_arrivo":11.6},"vincitore":{"team":"Switzerland","prob":35.4},"gol_a":1.5,"gol_b":1.3},"86":{"desc":"1o Gio.J vs 2o Gio.H","squadra_a":{"team":"Argentina","prob_arrivo":79.3},"squadra_b":{"team":"Uruguay","prob_arrivo":54.9},"vincitore":{"team":"Argentina","prob":62.1},"gol_a":2.2,"gol_b":1.6},"87":{"desc":"1o Gio.K vs 3a(D/E/I/J/L)","squadra_a":{"team":"Portugal","prob_arrivo":70.0},"squadra_b":{"team":"Ghana","prob_arrivo":12.5},"vincitore":{"team":"Portugal","prob":59.2},"gol_a":2.1,"gol_b":1.3},"88":{"desc":"2o Gio.D vs 2o Gio.G","squadra_a":{"team":"Turkey","prob_arrivo":30.9},"squadra_b":{"team":"Iran","prob_arrivo":39.8},"vincitore":{"team":"Iran","prob":22.2},"gol_a":1.4,"gol_b":1.3},"89":{"desc":"Vin.M74 vs Vin.M77","squadra_a":{"team":"Germany","prob_arrivo":48.4},"squadra_b":{"team":"France","prob_arrivo":58.0},"vincitore":{"team":"France","prob":43.3},"gol_a":1.8,"gol_b":2.0},"90":{"desc":"Vin.M73 vs Vin.M75","squadra_a":{"team":"South Korea","prob_arrivo":20.8},"squadra_b":{"team":"Netherlands","prob_arrivo":32.7},"vincitore":{"team":"Netherlands","prob":23.2},"gol_a":1.5,"gol_b":1.9},"91":{"desc":"Vin.M76 vs Vin.M78","squadra_a":{"team":"Brazil","prob_arrivo":42.9},"squadra_b":{"team":"Norway","prob_arrivo":30.6},"vincitore":{"team":"Brazil","prob":28.4},"gol_a":1.9,"gol_b":1.8},"92":{"desc":"Vin.M79 vs Vin.M80","squadra_a":{"team":"Mexico","prob_arrivo":38.6},"squadra_b":{"team":"England","prob_arrivo":54.8},"vincitore":{"team":"England","prob":37.5},"gol_a":1.7,"gol_b":1.8},"93":{"desc":"Vin.M83 vs Vin.M84","squadra_a":{"team":"Colombia","prob_arrivo":29.4},"squadra_b":{"team":"Spain","prob_arrivo":55.6},"vincitore":{"team":"Spain","prob":40.6},"gol_a":1.7,"gol_b":2.0},"94":{"desc":"Vin.M81 vs Vin.M82","squadra_a":{"team":"United States","prob_arrivo":42.4},"squadra_b":{"team":"Belgium","prob_arrivo":45.6},"vincitore":{"team":"Belgium","prob":27.0},"gol_a":1.6,"gol_b":1.8},"95":{"desc":"Vin.M86 vs Vin.M88","squadra_a":{"team":"Argentina","prob_arrivo":62.1},"squadra_b":{"team":"Iran","prob_arrivo":22.2},"vincitore":{"team":"Argentina","prob":53.5},"gol_a":2.1,"gol_b":1.3},"96":{"desc":"Vin.M85 vs Vin.M87","squadra_a":{"team":"Switzerland","prob_arrivo":35.4},"squadra_b":{"team":"Portugal","prob_arrivo":59.2},"vincitore":{"team":"Portugal","prob":46.1},"gol_a":1.5,"gol_b":2.1},"97":{"desc":"Vin.M89 vs Vin.M90","squadra_a":{"team":"France","prob_arrivo":43.3},"squadra_b":{"team":"Netherlands","prob_arrivo":23.2},"vincitore":{"team":"France","prob":29.9},"gol_a":2.0,"gol_b":1.9},"98":{"desc":"Vin.M93 vs Vin.M94","squadra_a":{"team":"Spain","prob_arrivo":40.6},"squadra_b":{"team":"Belgium","prob_arrivo":27.0},"vincitore":{"team":"Spain","prob":30.9},"gol_a":2.1,"gol_b":1.7},"99":{"desc":"Vin.M91 vs Vin.M92","squadra_a":{"team":"Brazil","prob_arrivo":28.4},"squadra_b":{"team":"England","prob_arrivo":37.5},"vincitore":{"team":"England","prob":21.9},"gol_a":1.9,"gol_b":1.9},"100":{"desc":"Vin.M95 vs Vin.M96","squadra_a":{"team":"Argentina","prob_arrivo":53.5},"squadra_b":{"team":"Portugal","prob_arrivo":46.1},"vincitore":{"team":"Argentina","prob":39.8},"gol_a":2.1,"gol_b":2.1},"101":{"desc":"Vin.M97 vs Vin.M98","squadra_a":{"team":"France","prob_arrivo":29.9},"squadra_b":{"team":"Spain","prob_arrivo":30.9},"vincitore":{"team":"Spain","prob":20.6},"gol_a":1.9,"gol_b":2.0},"102":{"desc":"Vin.M99 vs Vin.M100","squadra_a":{"team":"England","prob_arrivo":21.9},"squadra_b":{"team":"Argentina","prob_arrivo":39.8},"vincitore":{"team":"Argentina","prob":29.8},"gol_a":1.9,"gol_b":2.1},"103":{"desc":"Perd.M101 vs Perd.M102","squadra_a":{"team":"France","prob_arrivo":11.1},"squadra_b":{"team":"England","prob_arrivo":12.2},"vincitore":{"team":"France","prob":10.6},"gol_a":1.9,"gol_b":1.9},"104":{"desc":"Vin.M101 vs Vin.M102","squadra_a":{"team":"Spain","prob_arrivo":20.6},"squadra_b":{"team":"Argentina","prob_arrivo":29.8},"vincitore":{"team":"Argentina","prob":23.0},"gol_a":2.1,"gol_b":2.1}}};
+
+const FLAG_ISO = {
+  'Mexico':'mx','South Africa':'za','South Korea':'kr','Czech Republic':'cz',
+  'Canada':'ca','Bosnia and Herzegovina':'ba','Qatar':'qa','Switzerland':'ch',
+  'Brazil':'br','Morocco':'ma','Haiti':'ht','Scotland':'gb-sct',
+  'United States':'us','Paraguay':'py','Australia':'au','Turkey':'tr',
+  'Germany':'de','Curacao':'cw','Ivory Coast':'ci','Ecuador':'ec',
+  'Netherlands':'nl','Japan':'jp','Sweden':'se','Tunisia':'tn',
+  'Belgium':'be','Egypt':'eg','Iran':'ir','New Zealand':'nz',
+  'Spain':'es','Cape Verde':'cv','Saudi Arabia':'sa','Uruguay':'uy',
+  'France':'fr','Senegal':'sn','Iraq':'iq','Norway':'no',
+  'Argentina':'ar','Algeria':'dz','Austria':'at','Jordan':'jo',
+  'Portugal':'pt','DR Congo':'cd','Uzbekistan':'uz','Colombia':'co',
+  'England':'gb-eng','Croatia':'hr','Ghana':'gh','Panama':'pa'
+};
+
+function flagUrl(t){ const c=FLAG_ISO[t]; return c?'https://flagcdn.com/w40/'+c+'.png':''; }
+function flagImg(t,cls='flag'){
+  const u=flagUrl(t);
+  return u?'<img class="'+cls+'" src="'+u+'" alt="'+t+'" loading="lazy" onerror="this.style.display=\'none\'">':'';
+}
+function showScreen(id,btn){
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function closeModal(e){ if(e.target===document.getElementById('modal')) document.getElementById('modal').classList.remove('open'); }
+
+/* ---- GROUP STAGE ---- */
+function buildGroups(){
+  const grid=document.getElementById('groups-grid');
+  Object.entries(DATA.gironi).forEach(([name,g])=>{
+    const d=document.createElement('div');
+    d.className='group-card';
+    d.innerHTML='<div class="group-card-title">Group '+name+'</div>'
+      +'<div class="group-card-teams">'
+      +g.classifica.map(t=>'<div class="group-card-team">'+flagImg(t.team)+'<span>'+t.team+'</span></div>').join('')
+      +'</div>';
+    d.onclick=()=>openGroupModal(name,g);
+    grid.appendChild(d);
+  });
+}
+function openGroupModal(name,g){
+  const byDay={1:[],2:[],3:[]};
+  g.partite.forEach(p=>byDay[p.giornata].push(p));
+  let h='<div class="modal-title">Group '+name+'</div>';
+  h+='<table class="standings"><thead><tr><th>#</th><th>Team</th><th>Pts</th><th>GF</th><th>GS</th><th>Pass%</th></tr></thead><tbody>';
+  g.classifica.forEach((t,i)=>{
+    const q=i<2?'qualified':'';
+    h+='<tr><td><span class="pos '+q+'">'+(i+1)+'</span></td>'
+      +'<td><div class="team-cell">'+flagImg(t.team)+'<span>'+t.team+'</span></div></td>'
+      +'<td class="num">'+t.punti.toFixed(1)+'</td><td class="num">'+t.gf.toFixed(1)+'</td>'
+      +'<td class="num">'+t.gs.toFixed(1)+'</td><td class="num">'+t.pass_pct.toFixed(0)+'%</td></tr>';
+  });
+  h+='</tbody></table>';
+  [1,2,3].forEach(d=>{
+    if(!byDay[d].length) return;
+    h+='<div class="matchday-label">Matchday '+d+'</div>';
+    byDay[d].forEach(m=>{
+      h+='<div class="match-row">'
+        +'<div class="match-team">'+flagImg(m.squadra_a,'flag-sm')+'<span>'+m.squadra_a+'</span></div>'
+        +'<div class="match-score">'+m.gol_a.toFixed(1)+'&ndash;'+m.gol_b.toFixed(1)+'</div>'
+        +'<div class="match-team right">'+flagImg(m.squadra_b,'flag-sm')+'<span>'+m.squadra_b+'</span></div>'
+        +'</div>';
+    });
+  });
+  document.getElementById('modal-content').innerHTML=h;
+  document.getElementById('modal').classList.add('open');
+}
+
+/* ---- BRACKET ----
+   Layout constants. topOf(round, matchIndex) gives the absolute top px
+   for a card in that round. Each R32 slot = SLOT px; higher rounds
+   span 2^round slots so their cards are vertically centred inside.
+*/
+const SLOT=98;   // height of one R32 slot
+const CARD_H=86; // actual card height (must be < SLOT)
+const CARD_W=194;
+const GAP=34;    // horizontal space between rounds (used for connector arms)
+
+// R32 match order top-to-bottom, grouped by pairs feeding each R16 match
+const R32_PAIRS=[[74,77],[73,75],[83,84],[81,82],[76,78],[79,80],[86,88],[85,87]];
+const R32_FLAT=R32_PAIRS.flat();
+const R16=[89,90,93,94,91,92,95,96];
+const QF=[97,98,99,100];
+const SF=[101,102];
+const ROUNDS=[
+  {matches:R32_FLAT, label:'Round of 32'},
+  {matches:R16,      label:'Round of 16'},
+  {matches:QF,       label:'Quarter-Finals'},
+  {matches:SF,       label:'Semi-Finals'},
+  {matches:[104],    label:'Final'},
+];
+
+function topOf(roundIdx, matchIdx){
+  // slots per match doubles each round: 1, 2, 4, 8, 16
+  const slotsPerMatch = Math.pow(2, roundIdx);
+  const slotSpan = slotsPerMatch * SLOT;
+  return matchIdx * slotSpan + (slotSpan - CARD_H) / 2;
+}
+
+function buildBracket(){
+  const b=DATA.bracket;
+  const totalH=16*SLOT;
+  const colW=CARD_W+GAP;
+  const totalW=ROUNDS.length*colW+GAP;
+
+  // champion banner
+  const champ=DATA.vincitore_finale;
+  const m104=b['104'];
+  let html='<div class="champion-banner">'
+    +'<div class="champion-label">&#127942; Predicted Champion</div>'
+    +'<div class="champion-team">'+flagImg(champ)+'<span>'+champ+'</span>'
+    +'<span class="champion-prob">('+m104.vincitore.prob.toFixed(1)+'% chance)</span></div>'
+    +'</div>';
+
+  // round headers — one column per round, each colW wide
+  html+='<div class="bracket-rounds-hdr" style="min-width:'+totalW+'px">';
+  ROUNDS.forEach(r=>{
+    html+='<div class="rh" style="width:'+colW+'px;padding-left:'+(GAP/2)+'px">'+r.label+'</div>';
+  });
+  html+='</div>';
+
+  // positioned container
+  html+='<div style="position:relative;min-width:'+totalW+'px;height:'+totalH+'px">';
+
+  // SVG connector lines
+  html+='<svg style="position:absolute;inset:0;width:'+totalW+'px;height:'+totalH+'px;pointer-events:none" xmlns="http://www.w3.org/2000/svg">';
+  ROUNDS.forEach((r,ri)=>{
+    if(ri>=ROUNDS.length-1) return;
+    // right edge of current round cards
+    const xRight = ri*colW + GAP/2 + CARD_W;
+    // left edge of next round cards
+    const xLeft  = (ri+1)*colW + GAP/2;
+    const midX   = (xRight+xLeft)/2;
+    r.matches.forEach((_,mi)=>{
+      const cy = topOf(ri,mi) + CARD_H/2;
+      const ni = Math.floor(mi/2);
+      const ny = topOf(ri+1,ni) + CARD_H/2;
+      // L-shaped connector: right → midX horizontal → midX vertical → left
+      html+='<polyline points="'+xRight+','+cy+' '+midX+','+cy+' '+midX+','+ny+' '+xLeft+','+ny
+        +'" fill="none" stroke="#1c3055" stroke-width="1.5" stroke-linejoin="round"/>';
+    });
+  });
+  html+='</svg>';
+
+  // match cards
+  ROUNDS.forEach((r,ri)=>{
+    const xLeft = ri*colW + GAP/2;
+    r.matches.forEach((mn,mi)=>{
+      const m=b[String(mn)];
+      if(!m) return;
+      const top=topOf(ri,mi);
+      const sa=m.squadra_a, sb=m.squadra_b, v=m.vincitore;
+      const isFinal=(mn===104);
+      const winA=(v.team===sa.team);
+      const score = m.gol_a.toFixed(1)+' &ndash; '+m.gol_b.toFixed(1);
+      html+='<div class="bm'+(isFinal?' final-match':'')+'" '
+        +'style="top:'+top+'px;left:'+xLeft+'px;width:'+CARD_W+'px;height:'+CARD_H+'px">'
+        +'<div class="bm-num">M'+mn+'</div>'
+        +'<div class="bm-team'+(winA?' winner':'')+'">'+flagImg(sa.team,'flag-sm')
+        +'<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">'+sa.team+'</span>'
+        +'<span class="bm-prob">'+sa.prob_arrivo.toFixed(0)+'%</span></div>'
+        +'<hr class="bm-divider">'
+        +'<div class="bm-team'+(!winA?' winner':'')+'">'+flagImg(sb.team,'flag-sm')
+        +'<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">'+sb.team+'</span>'
+        +'<span class="bm-prob">'+sb.prob_arrivo.toFixed(0)+'%</span></div>'
+        +'<div class="bm-score">'+score+'</div>'
+        +'</div>';
+    });
+  });
+
+  html+='</div>'; // end positioned container
+
+  // 3rd place match
+  const m103=b['103'];
+  if(m103){
+    const sa=m103.squadra_a, sb=m103.squadra_b, v=m103.vincitore;
+    const winA=(v.team===sa.team);
+    const score3=m103.gol_a.toFixed(1)+' &ndash; '+m103.gol_b.toFixed(1);
+    html+='<div class="third-block">'
+      +'<div class="third-label">&#127949; 3rd Place Match &mdash; M103</div>'
+      +'<div class="bm" style="position:relative;width:'+CARD_W+'px;height:'+CARD_H+'px">'
+      +'<div class="bm-num">M103</div>'
+      +'<div class="bm-team'+(winA?' winner':'')+'">'+flagImg(sa.team,'flag-sm')+'<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">'+sa.team+'</span><span class="bm-prob">'+sa.prob_arrivo.toFixed(0)+'%</span></div>'
+      +'<hr class="bm-divider">'
+      +'<div class="bm-team'+(!winA?' winner':'')+'">'+flagImg(sb.team,'flag-sm')+'<span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1">'+sb.team+'</span><span class="bm-prob">'+sb.prob_arrivo.toFixed(0)+'%</span></div>'
+      +'<div class="bm-score">'+score3+'</div>'
+      +'</div></div>';
+  }
+
+  document.getElementById('bracket-container').innerHTML='<div class="bracket-outer">'+html+'</div>';
+}
+
+/* ---- WIN PROBABILITY ---- */
+function buildProbs(){
+  const sorted=Object.entries(DATA.vincitore_probabilita).sort((a,b)=>b[1]-a[1]);
+  const max=sorted[0][1];
+  let html='';
+  sorted.forEach(([team,pct],i)=>{
+    const tier=i===0?'gold':i===1?'silver':i===2?'bronze':'other';
+    html+='<div class="prob-row '+tier+'">'
+      +'<div class="prob-rank">'+(i+1)+'</div>'
+      +'<div class="prob-team">'+flagImg(team)+'<span class="prob-team-name">'+team+'</span></div>'
+      +'<div class="prob-bar-wrap"><div class="prob-bar" style="width:'+(pct/max*100).toFixed(1)+'%"></div></div>'
+      +'<div class="prob-pct">'+pct.toFixed(1)+'%</div>'
+      +'</div>';
+  });
+  document.getElementById('prob-list').innerHTML=html;
+}
+
+buildGroups();
+buildBracket();
+buildProbs();
+</script>
+</body>
+</html>

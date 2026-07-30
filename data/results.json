@@ -1,0 +1,1540 @@
+{
+  "vincitore_probabilita": {
+    "Mexico": 2.8,
+    "South Korea": 0.5,
+    "Czech Republic": 0.1,
+    "Canada": 0.3,
+    "Switzerland": 0.5,
+    "Brazil": 7.6,
+    "Morocco": 2.3,
+    "United States": 1.9,
+    "Australia": 0.1,
+    "Turkey": 0.1,
+    "Germany": 2.4,
+    "Netherlands": 3.5,
+    "Japan": 0.9,
+    "Sweden": 0.3,
+    "Belgium": 2.1,
+    "Iran": 0.5,
+    "Spain": 16.4,
+    "Uruguay": 1.5,
+    "France": 12.7,
+    "Senegal": 0.5,
+    "Norway": 1.9,
+    "Argentina": 24.0,
+    "Austria": 0.6,
+    "Portugal": 7.7,
+    "Colombia": 0.7,
+    "England": 6.3,
+    "Croatia": 1.8
+  },
+  "vincitore_finale": "Argentina",
+  "gironi": {
+    "A": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Mexico",
+          "punti": 5.5,
+          "gf": 4.7,
+          "gs": 4.1,
+          "pass_pct": 90.5
+        },
+        {
+          "pos": 2,
+          "team": "South Korea",
+          "punti": 4.3,
+          "gf": 4.5,
+          "gs": 4.3,
+          "pass_pct": 76.7
+        },
+        {
+          "pos": 3,
+          "team": "Czech Republic",
+          "punti": 3.9,
+          "gf": 4.3,
+          "gs": 4.3,
+          "pass_pct": 70.2
+        },
+        {
+          "pos": 4,
+          "team": "South Africa",
+          "punti": 2.7,
+          "gf": 3.7,
+          "gs": 4.5,
+          "pass_pct": 37.0
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Mexico",
+          "gol_a": 1.6,
+          "gol_b": 1.2,
+          "squadra_b": "South Africa"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Mexico",
+          "gol_a": 1.6,
+          "gol_b": 1.5,
+          "squadra_b": "South Korea"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Mexico",
+          "gol_a": 1.5,
+          "gol_b": 1.5,
+          "squadra_b": "Czech Republic"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "South Africa",
+          "gol_a": 1.2,
+          "gol_b": 1.5,
+          "squadra_b": "South Korea"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "South Africa",
+          "gol_a": 1.3,
+          "gol_b": 1.4,
+          "squadra_b": "Czech Republic"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "South Korea",
+          "gol_a": 1.5,
+          "gol_b": 1.4,
+          "squadra_b": "Czech Republic"
+        }
+      ]
+    },
+    "B": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Switzerland",
+          "punti": 5.3,
+          "gf": 4.4,
+          "gs": 4.0,
+          "pass_pct": 87.6
+        },
+        {
+          "pos": 2,
+          "team": "Canada",
+          "punti": 4.5,
+          "gf": 4.4,
+          "gs": 4.0,
+          "pass_pct": 75.8
+        },
+        {
+          "pos": 3,
+          "team": "Bosnia and Herzegovina",
+          "punti": 3.8,
+          "gf": 4.0,
+          "gs": 4.1,
+          "pass_pct": 69.3
+        },
+        {
+          "pos": 4,
+          "team": "Qatar",
+          "punti": 2.7,
+          "gf": 3.6,
+          "gs": 4.3,
+          "pass_pct": 38.8
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Canada",
+          "gol_a": 1.5,
+          "gol_b": 1.3,
+          "squadra_b": "Bosnia and Herzegovina"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Canada",
+          "gol_a": 1.5,
+          "gol_b": 1.2,
+          "squadra_b": "Qatar"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Canada",
+          "gol_a": 1.4,
+          "gol_b": 1.5,
+          "squadra_b": "Switzerland"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Bosnia and Herzegovina",
+          "gol_a": 1.3,
+          "gol_b": 1.2,
+          "squadra_b": "Qatar"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Bosnia and Herzegovina",
+          "gol_a": 1.3,
+          "gol_b": 1.4,
+          "squadra_b": "Switzerland"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Qatar",
+          "gol_a": 1.2,
+          "gol_b": 1.4,
+          "squadra_b": "Switzerland"
+        }
+      ]
+    },
+    "C": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Brazil",
+          "punti": 6.4,
+          "gf": 5.7,
+          "gs": 3.6,
+          "pass_pct": 96.9
+        },
+        {
+          "pos": 2,
+          "team": "Morocco",
+          "punti": 5.4,
+          "gf": 3.9,
+          "gs": 4.2,
+          "pass_pct": 93.2
+        },
+        {
+          "pos": 3,
+          "team": "Scotland",
+          "punti": 3.5,
+          "gf": 3.9,
+          "gs": 4.2,
+          "pass_pct": 63.9
+        },
+        {
+          "pos": 4,
+          "team": "Haiti",
+          "punti": 1.2,
+          "gf": 2.9,
+          "gs": 4.5,
+          "pass_pct": 8.9
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Brazil",
+          "gol_a": 1.9,
+          "gol_b": 1.3,
+          "squadra_b": "Morocco"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Brazil",
+          "gol_a": 1.9,
+          "gol_b": 1.0,
+          "squadra_b": "Haiti"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Brazil",
+          "gol_a": 1.9,
+          "gol_b": 1.3,
+          "squadra_b": "Scotland"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Morocco",
+          "gol_a": 1.3,
+          "gol_b": 1.0,
+          "squadra_b": "Haiti"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Morocco",
+          "gol_a": 1.3,
+          "gol_b": 1.3,
+          "squadra_b": "Scotland"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Haiti",
+          "gol_a": 0.9,
+          "gol_b": 1.3,
+          "squadra_b": "Scotland"
+        }
+      ]
+    },
+    "D": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "United States",
+          "punti": 5.7,
+          "gf": 4.7,
+          "gs": 4.2,
+          "pass_pct": 90.7
+        },
+        {
+          "pos": 2,
+          "team": "Australia",
+          "punti": 3.8,
+          "gf": 4.3,
+          "gs": 4.2,
+          "pass_pct": 67.9
+        },
+        {
+          "pos": 3,
+          "team": "Turkey",
+          "punti": 3.7,
+          "gf": 4.4,
+          "gs": 4.2,
+          "pass_pct": 67.6
+        },
+        {
+          "pos": 4,
+          "team": "Paraguay",
+          "punti": 3.2,
+          "gf": 3.7,
+          "gs": 4.5,
+          "pass_pct": 49.8
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "United States",
+          "gol_a": 1.5,
+          "gol_b": 1.3,
+          "squadra_b": "Paraguay"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "United States",
+          "gol_a": 1.5,
+          "gol_b": 1.4,
+          "squadra_b": "Australia"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "United States",
+          "gol_a": 1.6,
+          "gol_b": 1.5,
+          "squadra_b": "Turkey"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Paraguay",
+          "gol_a": 1.2,
+          "gol_b": 1.5,
+          "squadra_b": "Australia"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Paraguay",
+          "gol_a": 1.2,
+          "gol_b": 1.5,
+          "squadra_b": "Turkey"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Australia",
+          "gol_a": 1.4,
+          "gol_b": 1.4,
+          "squadra_b": "Turkey"
+        }
+      ]
+    },
+    "E": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Germany",
+          "punti": 6.5,
+          "gf": 5.9,
+          "gs": 3.7,
+          "pass_pct": 97.2
+        },
+        {
+          "pos": 2,
+          "team": "Ecuador",
+          "punti": 4.3,
+          "gf": 4.3,
+          "gs": 4.4,
+          "pass_pct": 78.6
+        },
+        {
+          "pos": 3,
+          "team": "Ivory Coast",
+          "punti": 3.9,
+          "gf": 3.9,
+          "gs": 4.4,
+          "pass_pct": 68.6
+        },
+        {
+          "pos": 4,
+          "team": "Curacao",
+          "punti": 1.8,
+          "gf": 3.1,
+          "gs": 4.6,
+          "pass_pct": 18.6
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Germany",
+          "gol_a": 1.9,
+          "gol_b": 1.0,
+          "squadra_b": "Curacao"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Germany",
+          "gol_a": 2.0,
+          "gol_b": 1.3,
+          "squadra_b": "Ivory Coast"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Germany",
+          "gol_a": 2.0,
+          "gol_b": 1.5,
+          "squadra_b": "Ecuador"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Curacao",
+          "gol_a": 1.0,
+          "gol_b": 1.3,
+          "squadra_b": "Ivory Coast"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Curacao",
+          "gol_a": 1.1,
+          "gol_b": 1.4,
+          "squadra_b": "Ecuador"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Ivory Coast",
+          "gol_a": 1.3,
+          "gol_b": 1.4,
+          "squadra_b": "Ecuador"
+        }
+      ]
+    },
+    "F": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Netherlands",
+          "punti": 5.4,
+          "gf": 5.5,
+          "gs": 4.5,
+          "pass_pct": 89.0
+        },
+        {
+          "pos": 2,
+          "team": "Japan",
+          "punti": 4.6,
+          "gf": 5.1,
+          "gs": 4.6,
+          "pass_pct": 83.5
+        },
+        {
+          "pos": 3,
+          "team": "Sweden",
+          "punti": 3.8,
+          "gf": 4.6,
+          "gs": 4.7,
+          "pass_pct": 69.0
+        },
+        {
+          "pos": 4,
+          "team": "Tunisia",
+          "punti": 2.5,
+          "gf": 3.7,
+          "gs": 5.1,
+          "pass_pct": 38.4
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Netherlands",
+          "gol_a": 1.8,
+          "gol_b": 1.8,
+          "squadra_b": "Japan"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Netherlands",
+          "gol_a": 1.9,
+          "gol_b": 1.5,
+          "squadra_b": "Sweden"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Netherlands",
+          "gol_a": 1.8,
+          "gol_b": 1.3,
+          "squadra_b": "Tunisia"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Japan",
+          "gol_a": 1.6,
+          "gol_b": 1.6,
+          "squadra_b": "Sweden"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Japan",
+          "gol_a": 1.7,
+          "gol_b": 1.3,
+          "squadra_b": "Tunisia"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Sweden",
+          "gol_a": 1.5,
+          "gol_b": 1.2,
+          "squadra_b": "Tunisia"
+        }
+      ]
+    },
+    "G": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Belgium",
+          "punti": 6.2,
+          "gf": 5.3,
+          "gs": 3.7,
+          "pass_pct": 96.5
+        },
+        {
+          "pos": 2,
+          "team": "Iran",
+          "punti": 4.8,
+          "gf": 3.9,
+          "gs": 4.2,
+          "pass_pct": 86.1
+        },
+        {
+          "pos": 3,
+          "team": "Egypt",
+          "punti": 4.3,
+          "gf": 4.1,
+          "gs": 4.2,
+          "pass_pct": 79.2
+        },
+        {
+          "pos": 4,
+          "team": "New Zealand",
+          "punti": 1.3,
+          "gf": 3.1,
+          "gs": 4.4,
+          "pass_pct": 10.0
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Belgium",
+          "gol_a": 1.8,
+          "gol_b": 1.4,
+          "squadra_b": "Egypt"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Belgium",
+          "gol_a": 1.7,
+          "gol_b": 1.3,
+          "squadra_b": "Iran"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Belgium",
+          "gol_a": 1.7,
+          "gol_b": 1.0,
+          "squadra_b": "New Zealand"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Egypt",
+          "gol_a": 1.4,
+          "gol_b": 1.3,
+          "squadra_b": "Iran"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Egypt",
+          "gol_a": 1.4,
+          "gol_b": 1.0,
+          "squadra_b": "New Zealand"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Iran",
+          "gol_a": 1.3,
+          "gol_b": 1.1,
+          "squadra_b": "New Zealand"
+        }
+      ]
+    },
+    "H": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Spain",
+          "punti": 6.7,
+          "gf": 6.3,
+          "gs": 4.1,
+          "pass_pct": 98.9
+        },
+        {
+          "pos": 2,
+          "team": "Uruguay",
+          "punti": 5.3,
+          "gf": 5.2,
+          "gs": 4.6,
+          "pass_pct": 91.9
+        },
+        {
+          "pos": 3,
+          "team": "Saudi Arabia",
+          "punti": 2.4,
+          "gf": 3.9,
+          "gs": 5.0,
+          "pass_pct": 34.5
+        },
+        {
+          "pos": 4,
+          "team": "Cape Verde",
+          "punti": 2.1,
+          "gf": 3.4,
+          "gs": 5.1,
+          "pass_pct": 27.3
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Spain",
+          "gol_a": 2.1,
+          "gol_b": 1.1,
+          "squadra_b": "Cape Verde"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Spain",
+          "gol_a": 2.1,
+          "gol_b": 1.3,
+          "squadra_b": "Saudi Arabia"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Spain",
+          "gol_a": 2.1,
+          "gol_b": 1.7,
+          "squadra_b": "Uruguay"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Cape Verde",
+          "gol_a": 1.1,
+          "gol_b": 1.3,
+          "squadra_b": "Saudi Arabia"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Cape Verde",
+          "gol_a": 1.1,
+          "gol_b": 1.7,
+          "squadra_b": "Uruguay"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Saudi Arabia",
+          "gol_a": 1.4,
+          "gol_b": 1.8,
+          "squadra_b": "Uruguay"
+        }
+      ]
+    },
+    "I": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "France",
+          "punti": 6.3,
+          "gf": 5.9,
+          "gs": 4.4,
+          "pass_pct": 96.7
+        },
+        {
+          "pos": 2,
+          "team": "Norway",
+          "punti": 4.7,
+          "gf": 5.1,
+          "gs": 4.7,
+          "pass_pct": 85.2
+        },
+        {
+          "pos": 3,
+          "team": "Senegal",
+          "punti": 3.8,
+          "gf": 4.3,
+          "gs": 4.8,
+          "pass_pct": 73.3
+        },
+        {
+          "pos": 4,
+          "team": "Iraq",
+          "punti": 1.7,
+          "gf": 3.7,
+          "gs": 5.1,
+          "pass_pct": 18.0
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "France",
+          "gol_a": 1.9,
+          "gol_b": 1.4,
+          "squadra_b": "Senegal"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "France",
+          "gol_a": 1.9,
+          "gol_b": 1.2,
+          "squadra_b": "Iraq"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "France",
+          "gol_a": 2.1,
+          "gol_b": 1.7,
+          "squadra_b": "Norway"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Senegal",
+          "gol_a": 1.4,
+          "gol_b": 1.2,
+          "squadra_b": "Iraq"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Senegal",
+          "gol_a": 1.4,
+          "gol_b": 1.7,
+          "squadra_b": "Norway"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Iraq",
+          "gol_a": 1.2,
+          "gol_b": 1.7,
+          "squadra_b": "Norway"
+        }
+      ]
+    },
+    "J": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Argentina",
+          "punti": 7.0,
+          "gf": 6.5,
+          "gs": 4.0,
+          "pass_pct": 98.5
+        },
+        {
+          "pos": 2,
+          "team": "Austria",
+          "punti": 4.3,
+          "gf": 4.8,
+          "gs": 4.6,
+          "pass_pct": 81.7
+        },
+        {
+          "pos": 3,
+          "team": "Algeria",
+          "punti": 3.4,
+          "gf": 3.8,
+          "gs": 5.0,
+          "pass_pct": 64.0
+        },
+        {
+          "pos": 4,
+          "team": "Jordan",
+          "punti": 1.7,
+          "gf": 3.5,
+          "gs": 5.1,
+          "pass_pct": 18.4
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Argentina",
+          "gol_a": 2.2,
+          "gol_b": 1.2,
+          "squadra_b": "Algeria"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Argentina",
+          "gol_a": 2.2,
+          "gol_b": 1.6,
+          "squadra_b": "Austria"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Argentina",
+          "gol_a": 2.1,
+          "gol_b": 1.1,
+          "squadra_b": "Jordan"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Algeria",
+          "gol_a": 1.3,
+          "gol_b": 1.6,
+          "squadra_b": "Austria"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Algeria",
+          "gol_a": 1.3,
+          "gol_b": 1.2,
+          "squadra_b": "Jordan"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Austria",
+          "gol_a": 1.7,
+          "gol_b": 1.2,
+          "squadra_b": "Jordan"
+        }
+      ]
+    },
+    "K": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "Portugal",
+          "punti": 6.5,
+          "gf": 6.2,
+          "gs": 4.2,
+          "pass_pct": 96.9
+        },
+        {
+          "pos": 2,
+          "team": "Colombia",
+          "punti": 5.2,
+          "gf": 5.0,
+          "gs": 4.6,
+          "pass_pct": 91.0
+        },
+        {
+          "pos": 3,
+          "team": "DR Congo",
+          "punti": 2.7,
+          "gf": 3.8,
+          "gs": 4.9,
+          "pass_pct": 44.7
+        },
+        {
+          "pos": 4,
+          "team": "Uzbekistan",
+          "punti": 2.1,
+          "gf": 3.6,
+          "gs": 4.9,
+          "pass_pct": 25.1
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "Portugal",
+          "gol_a": 2.1,
+          "gol_b": 1.3,
+          "squadra_b": "DR Congo"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Portugal",
+          "gol_a": 2.0,
+          "gol_b": 1.2,
+          "squadra_b": "Uzbekistan"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Portugal",
+          "gol_a": 2.1,
+          "gol_b": 1.7,
+          "squadra_b": "Colombia"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "DR Congo",
+          "gol_a": 1.2,
+          "gol_b": 1.1,
+          "squadra_b": "Uzbekistan"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "DR Congo",
+          "gol_a": 1.2,
+          "gol_b": 1.7,
+          "squadra_b": "Colombia"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Uzbekistan",
+          "gol_a": 1.3,
+          "gol_b": 1.6,
+          "squadra_b": "Colombia"
+        }
+      ]
+    },
+    "L": {
+      "classifica": [
+        {
+          "pos": 1,
+          "team": "England",
+          "punti": 6.5,
+          "gf": 5.7,
+          "gs": 3.8,
+          "pass_pct": 97.5
+        },
+        {
+          "pos": 2,
+          "team": "Croatia",
+          "punti": 5.3,
+          "gf": 4.5,
+          "gs": 4.3,
+          "pass_pct": 92.1
+        },
+        {
+          "pos": 3,
+          "team": "Ghana",
+          "punti": 2.7,
+          "gf": 3.8,
+          "gs": 4.6,
+          "pass_pct": 42.1
+        },
+        {
+          "pos": 4,
+          "team": "Panama",
+          "punti": 2.0,
+          "gf": 3.5,
+          "gs": 4.7,
+          "pass_pct": 22.7
+        }
+      ],
+      "partite": [
+        {
+          "giornata": 1,
+          "squadra_a": "England",
+          "gol_a": 1.9,
+          "gol_b": 1.5,
+          "squadra_b": "Croatia"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "England",
+          "gol_a": 1.9,
+          "gol_b": 1.2,
+          "squadra_b": "Ghana"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "England",
+          "gol_a": 1.9,
+          "gol_b": 1.1,
+          "squadra_b": "Panama"
+        },
+        {
+          "giornata": 3,
+          "squadra_a": "Croatia",
+          "gol_a": 1.5,
+          "gol_b": 1.3,
+          "squadra_b": "Ghana"
+        },
+        {
+          "giornata": 2,
+          "squadra_a": "Croatia",
+          "gol_a": 1.5,
+          "gol_b": 1.2,
+          "squadra_b": "Panama"
+        },
+        {
+          "giornata": 1,
+          "squadra_a": "Ghana",
+          "gol_a": 1.3,
+          "gol_b": 1.2,
+          "squadra_b": "Panama"
+        }
+      ]
+    }
+  },
+  "bracket": {
+    "73": {
+      "desc": "2o Gio.A vs 2o Gio.B",
+      "squadra_a": {
+        "team": "South Korea",
+        "prob_arrivo": 36.1
+      },
+      "squadra_b": {
+        "team": "Bosnia and Herzegovina",
+        "prob_arrivo": 32.3
+      },
+      "vincitore": {
+        "team": "South Korea",
+        "prob": 20.8
+      },
+      "gol_a": 1.5,
+      "gol_b": 1.4
+    },
+    "74": {
+      "desc": "1o Gio.E vs 3a(A/B/C/D/F)",
+      "squadra_a": {
+        "team": "Germany",
+        "prob_arrivo": 71.7
+      },
+      "squadra_b": {
+        "team": "Sweden",
+        "prob_arrivo": 14.0
+      },
+      "vincitore": {
+        "team": "Germany",
+        "prob": 48.4
+      },
+      "gol_a": 1.9,
+      "gol_b": 1.5
+    },
+    "75": {
+      "desc": "1o Gio.F vs 2o Gio.C",
+      "squadra_a": {
+        "team": "Netherlands",
+        "prob_arrivo": 52.4
+      },
+      "squadra_b": {
+        "team": "Morocco",
+        "prob_arrivo": 51.1
+      },
+      "vincitore": {
+        "team": "Netherlands",
+        "prob": 32.7
+      },
+      "gol_a": 1.8,
+      "gol_b": 1.3
+    },
+    "76": {
+      "desc": "1o Gio.C vs 2o Gio.F",
+      "squadra_a": {
+        "team": "Brazil",
+        "prob_arrivo": 65.0
+      },
+      "squadra_b": {
+        "team": "Japan",
+        "prob_arrivo": 36.3
+      },
+      "vincitore": {
+        "team": "Brazil",
+        "prob": 42.9
+      },
+      "gol_a": 2.0,
+      "gol_b": 1.7
+    },
+    "77": {
+      "desc": "1o Gio.I vs 3a(C/D/F/G/H)",
+      "squadra_a": {
+        "team": "France",
+        "prob_arrivo": 67.4
+      },
+      "squadra_b": {
+        "team": "Egypt",
+        "prob_arrivo": 18.0
+      },
+      "vincitore": {
+        "team": "France",
+        "prob": 58.0
+      },
+      "gol_a": 1.9,
+      "gol_b": 1.4
+    },
+    "78": {
+      "desc": "2o Gio.E vs 2o Gio.I",
+      "squadra_a": {
+        "team": "Ecuador",
+        "prob_arrivo": 41.7
+      },
+      "squadra_b": {
+        "team": "Norway",
+        "prob_arrivo": 43.9
+      },
+      "vincitore": {
+        "team": "Norway",
+        "prob": 30.6
+      },
+      "gol_a": 1.4,
+      "gol_b": 1.8
+    },
+    "79": {
+      "desc": "1o Gio.A vs 3a(C/E/F/H/I)",
+      "squadra_a": {
+        "team": "Mexico",
+        "prob_arrivo": 56.2
+      },
+      "squadra_b": {
+        "team": "Senegal",
+        "prob_arrivo": 23.7
+      },
+      "vincitore": {
+        "team": "Mexico",
+        "prob": 38.6
+      },
+      "gol_a": 1.6,
+      "gol_b": 1.4
+    },
+    "80": {
+      "desc": "1o Gio.L vs 3a(E/H/I/J/K)",
+      "squadra_a": {
+        "team": "England",
+        "prob_arrivo": 67.9
+      },
+      "squadra_b": {
+        "team": "Algeria",
+        "prob_arrivo": 20.2
+      },
+      "vincitore": {
+        "team": "England",
+        "prob": 54.8
+      },
+      "gol_a": 2.0,
+      "gol_b": 1.3
+    },
+    "81": {
+      "desc": "1o Gio.D vs 3a(B/E/F/I/J)",
+      "squadra_a": {
+        "team": "United States",
+        "prob_arrivo": 57.4
+      },
+      "squadra_b": {
+        "team": "Qatar",
+        "prob_arrivo": 13.0
+      },
+      "vincitore": {
+        "team": "United States",
+        "prob": 42.4
+      },
+      "gol_a": 1.5,
+      "gol_b": 1.2
+    },
+    "82": {
+      "desc": "1o Gio.G vs 3a(A/E/H/I/J)",
+      "squadra_a": {
+        "team": "Belgium",
+        "prob_arrivo": 61.0
+      },
+      "squadra_b": {
+        "team": "Czech Republic",
+        "prob_arrivo": 17.4
+      },
+      "vincitore": {
+        "team": "Belgium",
+        "prob": 45.6
+      },
+      "gol_a": 1.8,
+      "gol_b": 1.4
+    },
+    "83": {
+      "desc": "2o Gio.K vs 2o Gio.L",
+      "squadra_a": {
+        "team": "Colombia",
+        "prob_arrivo": 54.3
+      },
+      "squadra_b": {
+        "team": "Croatia",
+        "prob_arrivo": 52.5
+      },
+      "vincitore": {
+        "team": "Colombia",
+        "prob": 29.4
+      },
+      "gol_a": 1.6,
+      "gol_b": 1.6
+    },
+    "84": {
+      "desc": "1o Gio.H vs 2o Gio.J",
+      "squadra_a": {
+        "team": "Spain",
+        "prob_arrivo": 70.6
+      },
+      "squadra_b": {
+        "team": "Austria",
+        "prob_arrivo": 50.7
+      },
+      "vincitore": {
+        "team": "Spain",
+        "prob": 55.6
+      },
+      "gol_a": 2.0,
+      "gol_b": 1.7
+    },
+    "85": {
+      "desc": "1o Gio.B vs 3a(E/F/G/I/J)",
+      "squadra_a": {
+        "team": "Switzerland",
+        "prob_arrivo": 53.2
+      },
+      "squadra_b": {
+        "team": "Egypt",
+        "prob_arrivo": 11.6
+      },
+      "vincitore": {
+        "team": "Switzerland",
+        "prob": 35.4
+      },
+      "gol_a": 1.5,
+      "gol_b": 1.3
+    },
+    "86": {
+      "desc": "1o Gio.J vs 2o Gio.H",
+      "squadra_a": {
+        "team": "Argentina",
+        "prob_arrivo": 79.3
+      },
+      "squadra_b": {
+        "team": "Uruguay",
+        "prob_arrivo": 54.9
+      },
+      "vincitore": {
+        "team": "Argentina",
+        "prob": 62.1
+      },
+      "gol_a": 2.2,
+      "gol_b": 1.6
+    },
+    "87": {
+      "desc": "1o Gio.K vs 3a(D/E/I/J/L)",
+      "squadra_a": {
+        "team": "Portugal",
+        "prob_arrivo": 70.0
+      },
+      "squadra_b": {
+        "team": "Ghana",
+        "prob_arrivo": 12.5
+      },
+      "vincitore": {
+        "team": "Portugal",
+        "prob": 59.2
+      },
+      "gol_a": 2.1,
+      "gol_b": 1.3
+    },
+    "88": {
+      "desc": "2o Gio.D vs 2o Gio.G",
+      "squadra_a": {
+        "team": "Turkey",
+        "prob_arrivo": 30.9
+      },
+      "squadra_b": {
+        "team": "Iran",
+        "prob_arrivo": 39.8
+      },
+      "vincitore": {
+        "team": "Iran",
+        "prob": 22.2
+      },
+      "gol_a": 1.4,
+      "gol_b": 1.3
+    },
+    "89": {
+      "desc": "Vin.M74 vs Vin.M77",
+      "squadra_a": {
+        "team": "Germany",
+        "prob_arrivo": 48.4
+      },
+      "squadra_b": {
+        "team": "France",
+        "prob_arrivo": 58.0
+      },
+      "vincitore": {
+        "team": "France",
+        "prob": 43.3
+      },
+      "gol_a": 1.8,
+      "gol_b": 2.0
+    },
+    "90": {
+      "desc": "Vin.M73 vs Vin.M75",
+      "squadra_a": {
+        "team": "South Korea",
+        "prob_arrivo": 20.8
+      },
+      "squadra_b": {
+        "team": "Netherlands",
+        "prob_arrivo": 32.7
+      },
+      "vincitore": {
+        "team": "Netherlands",
+        "prob": 23.2
+      },
+      "gol_a": 1.5,
+      "gol_b": 1.9
+    },
+    "91": {
+      "desc": "Vin.M76 vs Vin.M78",
+      "squadra_a": {
+        "team": "Brazil",
+        "prob_arrivo": 42.9
+      },
+      "squadra_b": {
+        "team": "Norway",
+        "prob_arrivo": 30.6
+      },
+      "vincitore": {
+        "team": "Brazil",
+        "prob": 28.4
+      },
+      "gol_a": 1.9,
+      "gol_b": 1.8
+    },
+    "92": {
+      "desc": "Vin.M79 vs Vin.M80",
+      "squadra_a": {
+        "team": "Mexico",
+        "prob_arrivo": 38.6
+      },
+      "squadra_b": {
+        "team": "England",
+        "prob_arrivo": 54.8
+      },
+      "vincitore": {
+        "team": "England",
+        "prob": 37.5
+      },
+      "gol_a": 1.7,
+      "gol_b": 1.8
+    },
+    "93": {
+      "desc": "Vin.M83 vs Vin.M84",
+      "squadra_a": {
+        "team": "Colombia",
+        "prob_arrivo": 29.4
+      },
+      "squadra_b": {
+        "team": "Spain",
+        "prob_arrivo": 55.6
+      },
+      "vincitore": {
+        "team": "Spain",
+        "prob": 40.6
+      },
+      "gol_a": 1.7,
+      "gol_b": 2.0
+    },
+    "94": {
+      "desc": "Vin.M81 vs Vin.M82",
+      "squadra_a": {
+        "team": "United States",
+        "prob_arrivo": 42.4
+      },
+      "squadra_b": {
+        "team": "Belgium",
+        "prob_arrivo": 45.6
+      },
+      "vincitore": {
+        "team": "Belgium",
+        "prob": 27.0
+      },
+      "gol_a": 1.6,
+      "gol_b": 1.8
+    },
+    "95": {
+      "desc": "Vin.M86 vs Vin.M88",
+      "squadra_a": {
+        "team": "Argentina",
+        "prob_arrivo": 62.1
+      },
+      "squadra_b": {
+        "team": "Iran",
+        "prob_arrivo": 22.2
+      },
+      "vincitore": {
+        "team": "Argentina",
+        "prob": 53.5
+      },
+      "gol_a": 2.1,
+      "gol_b": 1.3
+    },
+    "96": {
+      "desc": "Vin.M85 vs Vin.M87",
+      "squadra_a": {
+        "team": "Switzerland",
+        "prob_arrivo": 35.4
+      },
+      "squadra_b": {
+        "team": "Portugal",
+        "prob_arrivo": 59.2
+      },
+      "vincitore": {
+        "team": "Portugal",
+        "prob": 46.1
+      },
+      "gol_a": 1.5,
+      "gol_b": 2.1
+    },
+    "97": {
+      "desc": "Vin.M89 vs Vin.M90",
+      "squadra_a": {
+        "team": "France",
+        "prob_arrivo": 43.3
+      },
+      "squadra_b": {
+        "team": "Netherlands",
+        "prob_arrivo": 23.2
+      },
+      "vincitore": {
+        "team": "France",
+        "prob": 29.9
+      },
+      "gol_a": 2.0,
+      "gol_b": 1.9
+    },
+    "98": {
+      "desc": "Vin.M93 vs Vin.M94",
+      "squadra_a": {
+        "team": "Spain",
+        "prob_arrivo": 40.6
+      },
+      "squadra_b": {
+        "team": "Belgium",
+        "prob_arrivo": 27.0
+      },
+      "vincitore": {
+        "team": "Spain",
+        "prob": 30.9
+      },
+      "gol_a": 2.1,
+      "gol_b": 1.7
+    },
+    "99": {
+      "desc": "Vin.M91 vs Vin.M92",
+      "squadra_a": {
+        "team": "Brazil",
+        "prob_arrivo": 28.4
+      },
+      "squadra_b": {
+        "team": "England",
+        "prob_arrivo": 37.5
+      },
+      "vincitore": {
+        "team": "England",
+        "prob": 21.9
+      },
+      "gol_a": 1.9,
+      "gol_b": 1.9
+    },
+    "100": {
+      "desc": "Vin.M95 vs Vin.M96",
+      "squadra_a": {
+        "team": "Argentina",
+        "prob_arrivo": 53.5
+      },
+      "squadra_b": {
+        "team": "Portugal",
+        "prob_arrivo": 46.1
+      },
+      "vincitore": {
+        "team": "Argentina",
+        "prob": 39.8
+      },
+      "gol_a": 2.1,
+      "gol_b": 2.1
+    },
+    "101": {
+      "desc": "Vin.M97 vs Vin.M98",
+      "squadra_a": {
+        "team": "France",
+        "prob_arrivo": 29.9
+      },
+      "squadra_b": {
+        "team": "Spain",
+        "prob_arrivo": 30.9
+      },
+      "vincitore": {
+        "team": "Spain",
+        "prob": 20.6
+      },
+      "gol_a": 1.9,
+      "gol_b": 2.0
+    },
+    "102": {
+      "desc": "Vin.M99 vs Vin.M100",
+      "squadra_a": {
+        "team": "England",
+        "prob_arrivo": 21.9
+      },
+      "squadra_b": {
+        "team": "Argentina",
+        "prob_arrivo": 39.8
+      },
+      "vincitore": {
+        "team": "Argentina",
+        "prob": 29.8
+      },
+      "gol_a": 1.9,
+      "gol_b": 2.1
+    },
+    "103": {
+      "desc": "Perd.M101 vs Perd.M102",
+      "squadra_a": {
+        "team": "France",
+        "prob_arrivo": 11.1
+      },
+      "squadra_b": {
+        "team": "England",
+        "prob_arrivo": 12.2
+      },
+      "vincitore": {
+        "team": "France",
+        "prob": 10.6
+      },
+      "gol_a": 1.9,
+      "gol_b": 1.9
+    },
+    "104": {
+      "desc": "Vin.M101 vs Vin.M102",
+      "squadra_a": {
+        "team": "Spain",
+        "prob_arrivo": 20.6
+      },
+      "squadra_b": {
+        "team": "Argentina",
+        "prob_arrivo": 29.8
+      },
+      "vincitore": {
+        "team": "Argentina",
+        "prob": 23.0
+      },
+      "gol_a": 2.1,
+      "gol_b": 2.1
+    }
+  }
+}
