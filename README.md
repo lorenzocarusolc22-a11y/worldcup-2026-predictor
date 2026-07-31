@@ -72,4 +72,4 @@ Then open dashboard.html in your browser.
 *Personal learning project built in a single day — the day before 
 the 2026 World Cup kicked off — to explore Claude Code and Monte 
 Carlo simulations. Data is estimated from publicly available FIFA 
-rankings and recent international results. Not affiliated with FIFA or any football association*
+rankings and recent international results. Not affiliated with FIFA or any football association.*
